@@ -1,0 +1,30 @@
+{
+  "name": "ng-restful",
+  "version": "0.1.0",
+  "description": "An Angular restful module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nosthertus/ngRestful.git"
+  },
+  "keywords": [
+    "angular",
+    "rest",
+    "api",
+    "restful",
+    "stateless",
+    "resource"
+  ],
+  "author": "Oscar Reyes <nosthertus@gmail.com> (https://github.com/nosthertus)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Nosthertus/ngRestful/issues"
+  },
+  "homepage": "https://github.com/Nosthertus/ngRestful#readme",
+  "dependencies": {
+    "angular": "^1.5.8"
+  }
+}
