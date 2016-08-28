@@ -1,0 +1,1 @@
+var ngRestful = angular.module("ngRestful", []);
