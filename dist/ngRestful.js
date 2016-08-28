@@ -14,7 +14,7 @@ ngRestful.service("$restful", ["$http", function($http){
 	 * @param  {Object}  headers The headers options to set in the request
 	 * @return {Promise}         The response from the host
 	 */
-	this.get = function(url[string], headers){
+	this.get = function(url, headers){
 		return $http({
 			method: "GET",
 			url: url,
