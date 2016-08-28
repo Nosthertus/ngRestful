@@ -1,6 +1,11 @@
 (function(){
 var ngRestful = angular.module("ngRestful", []);
 
+ngRestful.config(["$httpProvider", function($http){
+	// Enable CORS response
+	$http.defaults.useXDomain = true;
+}]);
+
 ngRestful.service("$restful", ["$http", function($http){
 	/**
 	 * Performs a GET request to the host
