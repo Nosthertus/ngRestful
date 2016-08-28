@@ -26,5 +26,10 @@
   "homepage": "https://github.com/Nosthertus/ngRestful#readme",
   "dependencies": {
     "angular": "^1.5.8"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat-util": "^0.5.5",
+    "gulp-wrap": "^0.13.0"
   }
 }
