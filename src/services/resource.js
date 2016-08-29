@@ -15,8 +15,8 @@ ngRestful.factory("$resource", ["$restful", function($restful){
 	/**
 	 * Fetches a collection list from the resource
 	 * 
-	 * @param  {String}  path The resource path of the host
-	 * @return {Promise}      The response from the host
+	 * @param  {String|Array}  path The resource path of the host
+	 * @return {Promise}            The response from the host
 	 */
 	resource.prototype.fetch = function(path){
 		if(Object.prototype.toString.call(path) == "[object Array]"){
@@ -26,6 +26,57 @@ ngRestful.factory("$resource", ["$restful", function($restful){
 		var http = [this.$url, path].join("/");
 
 		return $restful.get(http, this.headers);
+	};
+
+	/**
+	 * Sends data to a resource uri with POST method
+	 * 
+	 * @param  {String|Array} path The path of the host
+	 * @param  {Object}       data The data to send to the resource
+	 * @return {Promise}           The response from the host
+	 */
+	resource.prototype.save = function(path, data){
+		if(Object.prototype.toString.call(path) == "[object Array]"){
+			path = setParams(path[0], path[1])
+		}
+	
+		var http = [this.$url, path].join("/");
+		
+		return $restful.post(http, data, this.headers);
+	};
+
+	/**
+	 * Sends data to a resource uri with PUT method
+	 * 
+	 * @param  {String|Array} path The path of the host
+	 * @param  {Object}       data The data to send to the resource
+	 * @return {Promise}           The response from the host
+	 */
+	resource.prototype.update = function() {
+		if(Object.prototype.toString.call(path) == "[object Array]"){
+			path = setParams(path[0], path[1])
+		}
+	
+		var http = [this.$url, path].join("/");
+
+		return $restful.put(http, data, this.headers);
+	};
+
+	/**
+	 * Sends a request with data to a resource uri with DELETE method
+	 * 
+	 * @param  {String|Array} path The path of the host
+	 * @param  {Object}       data The data to send to the resource
+	 * @return {Promise}           The response from the host
+	 */
+	resource.prototype.delete = function() {
+		if(Object.prototype.toString.call(path) == "[object Array]"){
+			path = setParams(path[0], path[1])
+		}
+	
+		var http = [this.$url, path].join("/");
+
+		return $restful.delete(http, data, this.headers);
 	};
 
 	/**
