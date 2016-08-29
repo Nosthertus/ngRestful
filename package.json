@@ -30,6 +30,7 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-concat-util": "^0.5.5",
+    "gulp-jsbeautifier": "^2.0.3",
     "gulp-wrap": "^0.13.0"
   }
 }
