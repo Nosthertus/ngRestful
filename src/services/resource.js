@@ -7,8 +7,8 @@ ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $glo
 	 * @param  {Object} opts The options settings to set in the resource
 	 */
 	function resource(url, opts){
-		if($globals.domain && !isAbsolute(url)){
-			this.url = [$globals.domain, url].join("/")
+		if($globals.$domain && !isAbsolute(url)){
+			this.$url = [$globals.$domain, url].join("/")
 		}
 
 		else{
@@ -37,11 +37,11 @@ ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $glo
 	 * @return {Promise}            The response from the host
 	 */
 	resource.prototype.fetch = function(path){
-		if(Object.prototype.toString.call(path) == "[object Array]"){
+		if(path && Object.prototype.toString.call(path) == "[object Array]"){
 			path = setParams(path[0], path[1])
 		}
 
-		var http = [this.$url, path].join("/");
+		var http = path ? [this.$url, path].join("/") : this.$url;
 
 		return $restful.get(http, this.headers);
 	};
@@ -54,11 +54,11 @@ ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $glo
 	 * @return {Promise}           The response from the host
 	 */
 	resource.prototype.save = function(path, data){
-		if(Object.prototype.toString.call(path) == "[object Array]"){
+		if(path && Object.prototype.toString.call(path) == "[object Array]"){
 			path = setParams(path[0], path[1])
 		}
 	
-		var http = [this.$url, path].join("/");
+		var http = path ? [this.$url, path].join("/") : this.$url;
 		
 		return $restful.post(http, data, this.headers);
 	};
@@ -70,12 +70,12 @@ ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $glo
 	 * @param  {Object}       data The data to send to the resource
 	 * @return {Promise}           The response from the host
 	 */
-	resource.prototype.update = function() {
-		if(Object.prototype.toString.call(path) == "[object Array]"){
+	resource.prototype.update = function(path, data) {
+		if(path && Object.prototype.toString.call(path) == "[object Array]"){
 			path = setParams(path[0], path[1])
 		}
 	
-		var http = [this.$url, path].join("/");
+		var http = path ? [this.$url, path].join("/") : this.$url;
 
 		return $restful.put(http, data, this.headers);
 	};
@@ -87,12 +87,12 @@ ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $glo
 	 * @param  {Object}       data The data to send to the resource
 	 * @return {Promise}           The response from the host
 	 */
-	resource.prototype.delete = function() {
-		if(Object.prototype.toString.call(path) == "[object Array]"){
+	resource.prototype.delete = function(path, data) {
+		if(path && Object.prototype.toString.call(path) == "[object Array]"){
 			path = setParams(path[0], path[1])
 		}
 	
-		var http = [this.$url, path].join("/");
+		var http = path ? [this.$url, path].join("/") : this.$url;
 
 		return $restful.delete(http, data, this.headers);
 	};
