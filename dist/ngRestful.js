@@ -6,7 +6,17 @@
 		$http.defaults.useXDomain = true;
 	}]);
 
-	ngRestful.factory("$resource", ["$restful", function($restful) {
+	/*
+	 * Define constant configuration for the module
+	 */
+	ngRestful.constant("ngRestful", {
+		$domain: "",
+		setDomain: function(value) {
+			this.$domain = value
+		}
+	});
+
+	ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $globals) {
 		/**
 		 * Construct function of resource object
 		 * Defines the common settings for the resource
@@ -15,9 +25,25 @@
 		 * @param  {Object} opts The options settings to set in the resource
 		 */
 		function resource(url, opts) {
-			this.$url = url;
+			if ($globals.domain && !isAbsolute(url)) {
+				this.url = [$globals.domain, url].join("/")
+			} else {
+				this.$url = url;
+			}
 
 			this.$headers = opts ? (opts.headers || {}) : {};
+		}
+
+		/**
+		 * Checks if a provided url is absolute
+		 * 
+		 * @param  {String}  url The provided url to evaluate
+		 * @return {Boolean}     Whether the url is absolute
+		 */
+		function isAbsolute(url) {
+			var regex = /(https|http).+/g;
+
+			return url.match(regex) !== null;
 		}
 
 		/**
