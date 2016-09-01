@@ -1,6 +1,6 @@
 {
   "name": "ng-restful",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An Angular restful module",
   "main": "index.js",
   "scripts": {
@@ -26,5 +26,13 @@
   "homepage": "https://github.com/Nosthertus/ngRestful#readme",
   "dependencies": {
     "angular": "^1.5.8"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat-util": "^0.5.5",
+    "gulp-jsbeautifier": "^2.0.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-wrap": "^0.13.0"
   }
 }
