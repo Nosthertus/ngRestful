@@ -12,7 +12,7 @@
 	ngRestful.constant("ngRestful", {
 		$domain: "",
 		setDomain: function(value) {
-			this.$domain = value
+			this.$domain = value;
 		}
 	});
 
@@ -59,7 +59,7 @@
 
 			var http = path ? [this.$url, path].join("/") : this.$url;
 
-			return $restful.get(http, this.headers);
+			return $restful.get(http, this.$headers);
 		};
 
 		/**
@@ -76,7 +76,7 @@
 
 			var http = path ? [this.$url, path].join("/") : this.$url;
 
-			return $restful.post(http, data, this.headers);
+			return $restful.post(http, data, this.$headers);
 		};
 
 		/**
@@ -93,7 +93,7 @@
 
 			var http = path ? [this.$url, path].join("/") : this.$url;
 
-			return $restful.put(http, data, this.headers);
+			return $restful.put(http, data, this.$headers);
 		};
 
 		/**
@@ -110,7 +110,7 @@
 
 			var http = path ? [this.$url, path].join("/") : this.$url;
 
-			return $restful.delete(http, data, this.headers);
+			return $restful.delete(http, data, this.$headers);
 		};
 
 		/**

@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/Nosthertus/ngRestful#readme",
   "dependencies": {
-    "angular": "^1.5.8"
+    "angular": "^1.5.8",
+    "gulp-sourcemaps": "^1.6.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

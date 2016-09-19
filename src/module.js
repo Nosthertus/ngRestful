@@ -11,6 +11,6 @@ ngRestful.config(["$httpProvider", function($http){
 ngRestful.constant("ngRestful", {
 	$domain: "",
 	setDomain: function(value){
-		this.$domain = value
+		this.$domain = value;
 	}
 });
