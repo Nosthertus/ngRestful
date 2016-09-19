@@ -43,7 +43,7 @@ ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $glo
 
 		var http = path ? [this.$url, path].join("/") : this.$url;
 
-		return $restful.get(http, this.headers);
+		return $restful.get(http, this.$headers);
 	};
 
 	/**
@@ -60,7 +60,7 @@ ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $glo
 	
 		var http = path ? [this.$url, path].join("/") : this.$url;
 		
-		return $restful.post(http, data, this.headers);
+		return $restful.post(http, data, this.$headers);
 	};
 
 	/**
@@ -77,7 +77,7 @@ ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $glo
 	
 		var http = path ? [this.$url, path].join("/") : this.$url;
 
-		return $restful.put(http, data, this.headers);
+		return $restful.put(http, data, this.$headers);
 	};
 
 	/**
@@ -94,7 +94,7 @@ ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $glo
 	
 		var http = path ? [this.$url, path].join("/") : this.$url;
 
-		return $restful.delete(http, data, this.headers);
+		return $restful.delete(http, data, this.$headers);
 	};
 
 	/**
