@@ -69,12 +69,7 @@ ngRestful.service("$restful", ["$http", function($http){
 			}
 
 			// let the broswer handle the content-type request
-			for(h in headers){
-				if(h.toLowerCase() == "content-type"){
-					headers[h] = undefined;
-					break;
-				}
-			}
+			headers["Content-Type"] = undefined;
 
 			request = {
 				method: method,
