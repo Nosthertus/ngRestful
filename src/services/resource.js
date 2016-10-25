@@ -25,7 +25,7 @@ ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $glo
 	 * @return {Boolean}     Whether the url is absolute
 	 */
 	function isAbsolute(url){
-		var regex = /(https|http).+/g;
+		var regex = /^(https:\/\/|http:\/\/|\/\/).+/g;
 
 		return url.match(regex) !== null;
 	}
