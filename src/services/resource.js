@@ -7,12 +7,20 @@ ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $glo
 	 * @param  {Object} opts The options settings to set in the resource
 	 */
 	function resource(url, opts){
-		if($globals.$domain && !isAbsolute(url)){
-			this.$url = [$globals.$domain, url].join("/")
+		if(typeof url != "undefined" && !angular.isString(url)){
+			throw new Error("url in constructor is not a valid value.");
 		}
 
 		else{
-			this.$url = url;
+			url = "";
+
+			if($globals.$domain && !isAbsolute(url)){
+				this.$url = [$globals.$domain, url].join("/");
+			}
+
+			else{
+				this.$url = url;
+			}
 		}
 
 		this.$headers = opts ? (opts.headers || {}) : {};
