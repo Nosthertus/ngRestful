@@ -24,15 +24,9 @@
 		 * @param  {String} url  The URL of the host API
 		 * @param  {Object} opts The options settings to set in the resource
 		 */
-<<<<<<< HEAD
-		function resource(url, config) {
-			if ($globals.$domain && !isAbsolute(url)) {
-				this.$url = [$globals.$domain, url].join("/")
-=======
 		function resource(url, opts) {
 			if (typeof url != "undefined" && !angular.isString(url)) {
 				throw new Error("url in constructor is not a valid value.");
->>>>>>> c3878739227fae9d6ecccfb3df35c60795f84c7d
 			} else {
 				url = "";
 
