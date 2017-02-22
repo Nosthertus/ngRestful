@@ -22,14 +22,12 @@
 		 * Defines the common settings for the resource
 		 * 
 		 * @param  {String} url  The URL of the host API
-		 * @param  {Object} opts The options settings to set in the resource
+		 * @param  {Object} config The options settings to set in the resource
 		 */
-		function resource(url, opts) {
+		function resource(url, config) {
 			if (typeof url != "undefined" && !angular.isString(url)) {
 				throw new Error("url in constructor is not a valid value.");
 			} else {
-				url = "";
-
 				if ($globals.$domain && !isAbsolute(url)) {
 					this.$url = [$globals.$domain, url].join("/");
 				} else {
