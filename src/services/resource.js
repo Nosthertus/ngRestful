@@ -6,7 +6,7 @@ ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $glo
 	 * @param  {String} url  The URL of the host API
 	 * @param  {Object} opts The options settings to set in the resource
 	 */
-	function resource(url, opts){
+	function resource(url, config){
 		if($globals.$domain && !isAbsolute(url)){
 			this.$url = [$globals.$domain, url].join("/")
 		}
@@ -15,7 +15,7 @@ ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $glo
 			this.$url = url;
 		}
 
-		this.$headers = opts ? (opts.headers || {}) : {};
+		this.$config = config || {};
 	}
 
 	/**
@@ -43,7 +43,7 @@ ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $glo
 
 		var http = path ? [this.$url, path].join("/") : this.$url;
 
-		return $restful.get(http, this.$headers);
+		return $restful.get(http, this.$config);
 	};
 
 	/**
@@ -60,7 +60,7 @@ ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $glo
 	
 		var http = path ? [this.$url, path].join("/") : this.$url;
 		
-		return $restful.post(http, data, this.$headers);
+		return $restful.post(http, data, this.$config);
 	};
 
 	/**
@@ -77,7 +77,7 @@ ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $glo
 	
 		var http = path ? [this.$url, path].join("/") : this.$url;
 
-		return $restful.put(http, data, this.$headers);
+		return $restful.put(http, data, this.$config);
 	};
 
 	/**
@@ -94,7 +94,7 @@ ngRestful.factory("$resource", ["$restful", "ngRestful", function($restful, $glo
 	
 		var http = path ? [this.$url, path].join("/") : this.$url;
 
-		return $restful.delete(http, data, this.$headers);
+		return $restful.delete(http, data, this.$config);
 	};
 
 	/**
