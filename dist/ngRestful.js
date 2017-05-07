@@ -11,8 +11,12 @@
 	 */
 	ngRestful.constant("ngRestful", {
 		$domain: "",
+		$headers: {},
 		setDomain: function(value) {
 			this.$domain = value;
+		},
+		setHeader: function(key, value) {
+			this.$headers[key] = value;
 		}
 	});
 
@@ -136,7 +140,7 @@
 		return resource;
 	}]);
 
-	ngRestful.service("$restful", ["$http", function($http) {
+	ngRestful.service("$restful", ["$http", "ngRestful", function($http, $globals) {
 		/**
 		 * Performs a GET request to the host
 		 * 
@@ -207,16 +211,20 @@
 			// Merge config data into request object
 			Object.assign(request, config);
 
+			// Check if headers is defined, if otherwise then create object
+			if (typeof request.headers == "undefined") {
+				request.headers = {};
+			}
+
+			// Merge default headers into header request object
+			Object.assign(request.headers, $globals.$headers);
+
 			// Create custom object for attached files
 			if (method != "GET" && this.hasFileObject(data)) {
 				var form = new FormData();
 
 				for (prop in data) {
 					form.append(prop, data[prop]);
-				}
-
-				if (typeof request.headers == "undefined") {
-					request.headers = {};
 				}
 
 				// let the broswer handle the content-type request

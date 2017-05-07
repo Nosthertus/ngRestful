@@ -10,7 +10,11 @@ ngRestful.config(["$httpProvider", function($http){
  */
 ngRestful.constant("ngRestful", {
 	$domain: "",
+	$headers: {},
 	setDomain: function(value){
 		this.$domain = value;
+	},
+	setHeader: function(key, value){
+		this.$headers[key] = value;
 	}
 });
